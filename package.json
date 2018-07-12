@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "description": "Experiments with node.js",
   "main": "src/app.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Anton Punko",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.5.2"
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   }
 }
