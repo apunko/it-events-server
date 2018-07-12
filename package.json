@@ -1,0 +1,13 @@
+{
+  "name": "koa-backend",
+  "version": "0.0.1",
+  "description": "Experiments with node.js",
+  "main": "src/app.js",
+  "scripts": {
+  },
+  "author": "Anton Punko",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.2"
+  }
+}
