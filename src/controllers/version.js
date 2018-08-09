@@ -4,7 +4,7 @@ const { version } = require('../../package');
 
 const router = new Router();
 
-async function get(ctx) {
+function show(ctx) {
   if (ctx.params.infoAccessUUID !== process.env.INFO_ACCESS_UUID) {
     return;
   }
@@ -12,6 +12,6 @@ async function get(ctx) {
   ctx.body = { version };
 }
 
-router.get('/', get);
+router.get('/', show);
 
 module.exports = router;
