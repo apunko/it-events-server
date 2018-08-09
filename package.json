@@ -10,6 +10,11 @@
     "lint": "eslint .",
     "start": "pm2 start src/app.js --watch"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
   "author": "Anton Punko",
   "license": "ISC",
   "dependencies": {
@@ -25,6 +30,7 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-security": "^1.4.0",
+    "husky": "^1.0.0-rc.13",
     "prettier": "^1.14.2"
   }
 }
