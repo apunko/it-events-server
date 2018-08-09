@@ -6,8 +6,10 @@ const { JSDOM } = jsdom;
 class Crawler {
   static async parse(link) {
     const dom = await JSDOM.fromURL(link);
-    console.log(dom);
+    dom.window.document.querySelectorAll('.list-item-events .item-body a.title').forEach((event) => {
+      console.log(event.textContent);
+    });
   }
 }
 
-Crawler.parse(process.argv.slice(-1)[0] || process.env.DEFAULT_PARSE_URL);
+Crawler.parse(process.argv[2] || process.env.DEFAULT_PARSE_URL);
