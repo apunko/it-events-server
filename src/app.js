@@ -1,14 +1,15 @@
 require('dotenv').config();
 
 const logger = require('koa-logger');
-const Koa = require('koa');
+const helmet = require('koa-helmet');
 const bodyParser = require('koa-bodyparser');
+const Koa = require('koa');
+const router = require('./router');
 
 const app = new Koa();
 
-const router = require('./router');
-
 app.use(logger());
+app.use(helmet());
 app.use(bodyParser());
 app.use(router.routes());
 app.use(router.allowedMethods());
