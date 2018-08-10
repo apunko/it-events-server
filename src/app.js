@@ -1,6 +1,8 @@
+/* eslint-disable no-process-exit */
+
 require('dotenv').config();
 
-const logger = require('koa-logger');
+const koaLogger = require('koa-logger');
 const helmet = require('koa-helmet');
 const bodyParser = require('koa-bodyparser');
 const Koa = require('koa');
@@ -8,10 +10,34 @@ const router = require('./router');
 
 const app = new Koa();
 
-app.use(logger());
+app.use(koaLogger());
 app.use(helmet());
 app.use(bodyParser());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(3000);
+const logger = require('./helpers/logger')(__filename);
+
+async function onStop() {
+  try {
+    logger.info('server successfully stopped');
+
+    process.exit(0);
+  } catch (error) {
+    logger.warn('server stopped with error %s', error);
+
+    process.exit(1);
+  }
+}
+
+async function main() {
+  process.on('SIGINT', onStop);
+  app.listen(3000);
+  logger.info('App started successfully on the port 3000');
+}
+
+main().catch(error => {
+  logger.error("App doesn't started, error: %s", error);
+
+  process.exit(1);
+});
