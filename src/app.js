@@ -20,11 +20,11 @@ const logger = require('./helpers/logger')(__filename);
 
 async function onStop() {
   try {
-    logger.info('server successfully stopped');
+    logger.info('Server successfully stopped');
 
     process.exit(0);
   } catch (error) {
-    logger.warn('server stopped with error %s', error);
+    logger.warn(`Server stopped with error: ${error}`);
 
     process.exit(1);
   }
@@ -37,7 +37,7 @@ async function main() {
 }
 
 main().catch(error => {
-  logger.error("App doesn't started, error: %s", error);
+  logger.error(`App doesn't started, error: ${error}`);
 
   process.exit(1);
 });
